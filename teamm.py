@@ -1,10 +1,11 @@
 import time
 
 roomArray = []
-itemArray = []
+itemArray = ["Red Key", "Blue Key", "Green Key", "Coin", "Coin", "Coin"]
 
 for i in range(999):
   roomArray.append(False)
+  itemArray.append(False)
 
 roomArray[204] = "There is a long hallway to the East. There are marks on the walls that look like the letter S."
 roomArray[304] = "There is a red door directly North. There is a red object in the distance toward the East."
