@@ -16,11 +16,6 @@ roomArray[503] = "In the current room there is a gold coin to the north of you a
 roomArray[504] = "There is a red key in the room with you, an a gold coin in the room to your right, and one in the distance to the north of you."
 roomArray[604] = " A gold coin is sitting in front of you in the small room."
 
-roomArray[502] = "You are in a room with a shiny gold coin, to the south of you see a red key."
-roomArray[503] = "In the current room there is a gold coin to the north of you and a red key to your south."
-roomArray[504] = "There is a red key in the room with you, an a gold coin in the room to your right, and one in the distance to the north of you."
-roomArray[604] = " A gold coin is sitting in front of you in the small room."
-
 def main():
   location = roomArray[204]
   print("Corrdior of Secrets")
