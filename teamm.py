@@ -13,12 +13,13 @@ roomArray[404] = "You are in the middle of the hallway with rooms to the East an
 roomArray[303] = "The red door was opened. The walls in this room are painted red. The only way out is the way you came in."
 roomArray[502] = "You reached the end of this hallway. There are paintings on the walls."
 roomArray[503] = "You are in the middle of this hallway with rooms to the North and South."
-roomArray[504] = "There is a red key in the room with you, an a gold coin in the room to your right, and one in the distance to the north of you."
-roomArray[604] = " A gold coin is sitting in front of you in the small room."
-roomArray[306] = "The room has black and white striped wallpaper. There is one dim light hanging from the ceiling. Towards the left corner you notice a small green key. There are no other exits besides the one you entered through, from the east."
+roomArray[504] = "There is a hallway to the North. The hallway you are in continues East."
+roomArray[604] = "You reached a dead end. There are spikes on the ceiling."
+roomArray[306] = "The room has black and white striped wallpaper. There is one dim light hanging from the ceiling. There are no other exits besides the one you entered through, from the East."
 roomArray[405] = "There are walls to your East and West. There is a faint light coming from the South."
 roomArray[406] = "There are no lights in this room. However, a dim light eluminates the floor from your West. A stronger light eluminates the floor from your East."
-roomArray[506] = "The room is brightly lit. There are white walls blocking the North, East, and South. A small gold coin sits on the floor next to a broken table."
+roomArray[506] = "The room is brightly lit. There are white walls blocking the North, East, and South."
+
 
 def doesRoomExist(roomNumber):
     if roomArray[roomNumber] == False:
