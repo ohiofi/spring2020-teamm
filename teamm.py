@@ -7,12 +7,12 @@ for i in range(999):
   roomArray.append(False)
   itemArray.append(False)
 
-roomArray[204] = "There is a long hallway to the East. There are marks on the walls that look like the letter S."
-roomArray[304] = "There is a red door directly North. There is a red object in the distance toward the East."
-roomArray[404] = "There is a red key on the floor. There is another room to the East and a hallway to the North."
-roomArray[303] = "The red door was opened. The walls in this room are painted red. There is a blue key in the room."
-roomArray[502] = "You are in a room with a shiny gold coin, to the south of you see a red key."
-roomArray[503] = "In the current room there is a gold coin to the north of you and a red key to your south."
+roomArray[204] = "There is a long hallway to the East. The word START is written all over the walls in pen."
+roomArray[304] = "There is a red door directly North and a hallway to the East"
+roomArray[404] = "You are in the middle of the hallway with rooms to the East and West. There is a hallway to the South." 
+roomArray[303] = "The red door was opened. The walls in this room are painted red. The only way out is the way you came in."
+roomArray[502] = "You reached the end of this hallway. There are paintings on the walls."
+roomArray[503] = "You are in the middle of this hallway with rooms to the North and South."
 roomArray[504] = "There is a red key in the room with you, an a gold coin in the room to your right, and one in the distance to the north of you."
 roomArray[604] = " A gold coin is sitting in front of you in the small room."
 roomArray[306] = "The room has black and white striped wallpaper. There is one dim light hanging from the ceiling. Towards the left corner you notice a small green key. There are no other exits besides the one you entered through, from the east."
