@@ -32,6 +32,15 @@ def doesRoomExist(roomNumber):
     except:
         print("You can't go there")
         return False
+      
+def doesItemExist(roomNumber):
+  try:
+    if itemArray[roomNumber] == False:
+      print("There are no items")
+    else:
+      print("Item: " + itemArray[roomNumber])
+  except:
+      print("There are no items")
 
 def move(userInput, location):
     if userInput == "n" and doesRoomExist(location - 1) == True:
