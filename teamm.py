@@ -42,6 +42,7 @@ def move(userInput, location):
         location = location + 100
     elif userInput == "w" and doesRoomExist(location - 100) == True:
         location = location - 100
+    return location
 
 def main():
   location = 204
