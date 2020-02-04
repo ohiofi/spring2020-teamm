@@ -1,7 +1,7 @@
 import time
 
 roomArray = []
-itemArray = ["Red Key", "Blue Key", "Green Key", "Coin", "Coin", "Coin"]
+itemArray = []
 
 for i in range(999):
   roomArray.append(False)
@@ -19,28 +19,31 @@ roomArray[306] = "The room has black and white striped wallpaper. There is one d
 roomArray[405] = "There are walls to your East and West. There is a faint light coming from the South."
 roomArray[406] = "There are no lights in this room. However, a dim light eluminates the floor from your West. A stronger light eluminates the floor from your East."
 roomArray[506] = "The room is brightly lit. There are white walls blocking the North, East, and South."
+itemArray[303] = "Blue Key"
+itemArray[504] = "Red Key"
+itemArray[306] = "Green Key"
+itemArray[502] = "Coin"
+itemArray[604] = "Coin"
+itemArray[506] = "Coin"
 
 
 def doesRoomExist(roomNumber):
+  try:
     if roomArray[roomNumber] == False:
-        print("You can't go there")
-        return False
+      print("You can't go there")
+      return False
     else:
-        return True
-    try:
-        roomNumber
-    except:
-        print("You can't go there")
-        return False
+      return True   
+  except:
+    print("You can't go there")
+    return False
       
 def doesItemExist(roomNumber):
   try:
-    if itemArray[roomNumber] == False:
-      print("There are no items")
-    else:
+    if not itemArray[roomNumber] == False:
       print("Item: " + itemArray[roomNumber])
   except:
-      print("There are no items")
+      return
 
 def move(userInput, location):
     if userInput == "n" and doesRoomExist(location - 1) == True:
@@ -60,6 +63,7 @@ def main():
   time.sleep(1)
   while True:
     print(roomArray[location])
+    doesItemExist(location)
     print("Please type: N, S, E, W, or quit")
     userInput = input()
     location = move(userInput, location)
