@@ -92,14 +92,21 @@ def matthewMain():
       break
 
 def main():
+  map = Map()
   matthew = 0
   location = 204
   print("Corrdior of Secrets")
   print("By Matthew, Brandon, Eric")
   time.sleep(1)
   while True:
+    map.draw(roomArray, itemArray, location)
     print(roomArray[location])
     doesItemExist(location)
-    print("Please type: N, S, E, W, or quit")
+    print("Please type: N (up), S (down), E (right), W (left), Q (quit), T (take item)")
     userInput = input()
     location = move(userInput, location)
+    if location == 405 and matthew == 0:
+      matthewMain()
+      matthew += 1
+    if location == 405 and matthew == 1:
+      print("You have already completed the secret word puzzle.")
