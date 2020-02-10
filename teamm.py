@@ -1,4 +1,6 @@
 import time
+import random
+from map import *
 
 roomArray = []
 itemArray = []
@@ -19,6 +21,15 @@ roomArray[306] = "The room has black and white striped wallpaper. There is one d
 roomArray[405] = "There are walls to your East and West. There is a faint light coming from the South."
 roomArray[406] = "There are no lights in this room. However, a dim light eluminates the floor from your West. A stronger light eluminates the floor from your East."
 roomArray[506] = "The room is brightly lit. There are white walls blocking the North, East, and South."
+roomArray[407] = "There is a brown rug on the floor. The hallway continues South."
+roomArray[408] = "The hallway continues South and has a branch leading West."
+roomArray[409] = "The hallway reached it's end, but a hallway to the East is brightly lit"
+roomArray[509] = "There is a bright light above you. The hallway gets darker toward the East."
+roomArray[609] = "There is a small room to the North. The light shines from the West."
+roomArray[608] = "You are in a small room. The only way out is the way you came in."
+roomArray[308] = "The long hallway is to the East. There are flashing stobe lights to the West."
+roomArray[208] = "There is a room to the North. The strobe lights are very bright."
+roomArray[207] = "There is a large mirror in the room. You see the strobe lights in the mirror."
 itemArray[303] = "Blue Key"
 itemArray[504] = "Red Key"
 itemArray[306] = "Green Key"
@@ -55,8 +66,33 @@ def move(userInput, location):
     elif userInput == "w" and doesRoomExist(location - 100) == True:
         location = location - 100
     return location
+  
+def randomSecretWord():
+  list1 = ["red", "orange", "yellow", "green", "blue", "indigo", "violet", "pink", "brown", "black", "grey"]
+  list2 = ["apple", "banana", "pear", "tomato", "grape", "watermelon", "cherry", "grapefruit", "pineapple", "mango"]
+  list3 = ["america", "canada", "mexico", "brazil", "england", "egypt", "germany", "russia", "china", "japan"]
+  combinedList = list1 + list2 + list3
+  return random.choice(combinedList)
+
+def matthewMain():
+  randomWord = randomSecretWord()
+  randomWord = randomWord.lower()
+  print("There are words witten all over the wall: " "red", "orange", "yellow", "green", "blue", "indigo", "violet", "pink", "brown", "black", "grey", "apple", "banana", "pear", "tomato", "grape", "watermelon", "cherry", "grapefruit", "pineapple", "mango", "america", "canada", "mexico", "brazil", "england", "egypt", "germany", "russia", "china", "japan")
+  print("Take a guess on one of the words and I'll tell you if the secret word is before your word or after your word. Find the correct word to proceed.")
+  while True:
+    print("Guess a word")
+    userInput = input()
+    userInput = userInput.lower()
+    if userInput < randomWord:
+      print("The secret word is after " + str(userInput))
+    if userInput > randomWord:
+      print("The secret word is before " + str(userInput))
+    if userInput == randomWord:
+      print("You got it! You may now continue.")
+      break
 
 def main():
+  matthew = 0
   location = 204
   print("Corrdior of Secrets")
   print("By Matthew, Brandon, Eric")
