@@ -110,3 +110,73 @@ def main():
       matthew += 1
     if location == 405 and matthew == 1:
       print("You have already completed the secret word puzzle.")
+
+ #[room number]"There is a steel safe with a combination lock on it. Looks like it can be cracked by putting in the right combination of numbers."
+from random import *
+import time
+def lockCombo():
+    return randint(0,12)
+
+def validGuess(num):
+    if int(num) >= 0 and int(num) <= 12:
+        return True
+    else:
+        print("This number is not on the lock.")
+        return False
+
+def guessLock1():
+    first = lockCombo()
+    print("The lock should only need three numbers. Try guessing one number at a time from 0-12")
+    while True:
+        guess = input()
+        if validGuess(guess) == True:
+            if int(guess) == first:
+                print("You got the first number!")
+                break
+            else:
+                print("Try another number, 0-12:")
+
+def guessLock2():
+    second = lockCombo()
+    print("Now try the second number.")
+    while True:
+        guess = input()
+        if validGuess(guess) == True:
+            if int(guess) == second:
+                print("You got the second number!")
+                break
+            else:
+                print("Wrong Number! You reset the lock...")
+                time.sleep(1)
+                print("and reenter the first number...")
+                time.sleep(1)
+                print("Try the second number again:")
+
+def guessLock3():
+    third = lockCombo()
+    print("Now try the third number.")
+    while True:
+        guess = input()
+        if validGuess(guess) == True:
+            if int(guess) == third:
+                print("You got the third number!")
+                break
+            else:
+                print("Wrong Number! You reset the lock...")
+                time.sleep(1)
+                print("and reenter the first number and second number...")
+                time.sleep(1)
+                print("Try the third number again:")
+
+def mainLock():
+    firstEnter = 0
+    if firstEnter == 0:
+        guessLock1()
+        guessLock2()
+        guessLock3()
+        print("You've cracked the lock!")
+        firstEnter = firstEnter + 1
+    if firstEnter ==1 and move(n,500):
+        print("You've already cracked the lock for this chest")
+
+mainLock()
