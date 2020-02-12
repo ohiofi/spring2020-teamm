@@ -4,6 +4,7 @@ from map import *
 
 roomArray = []
 itemArray = []
+inventoryArray = []
 
 for i in range(999):
   roomArray.append(False)
@@ -11,22 +12,19 @@ for i in range(999):
 
 roomArray[204] = "There is a long hallway to the East. The word START is written all over the walls in pen."
 roomArray[304] = "There is a red door directly North and a hallway to the East"
-roomArray[404] = "You are in the middle of the hallway with rooms to the East and West. There is a hallway to the South." 
-roomArray[303] = "The red door was opened. The walls in this room are painted red. The only way out is the way you came in."
+roomArray[404] = "You are in the middle of the hallway with rooms to the East and West. There is a long hallway to the South." 
 roomArray[502] = "You reached the end of this hallway. There are paintings on the walls."
 roomArray[503] = "You are in the middle of this hallway with rooms to the North and South."
 roomArray[504] = "There is a hallway to the North. The hallway you are in continues East."
 roomArray[604] = "You reached a dead end. There are spikes on the ceiling."
-roomArray[306] = "The room has black and white striped wallpaper. There is one dim light hanging from the ceiling. There are no other exits besides the one you entered through, from the East."
 roomArray[405] = "There are walls to your East and West. There is a faint light coming from the South."
-roomArray[406] = "There are no lights in this room. However, a dim light eluminates the floor from your West. A stronger light eluminates the floor from your East."
-roomArray[506] = "The room is brightly lit. There are white walls blocking the North, East, and South."
+roomArray[406] = "There are no lights in this room. However, there is a blue door to the West. A stronger light eluminates the floor from your East."
+roomArray[506] = "The room is brightly lit. There are white walls blocking the North, East, and South." 
 roomArray[407] = "There is a brown rug on the floor. The hallway continues South."
 roomArray[408] = "The hallway continues South and has a branch leading West."
 roomArray[409] = "The hallway reached it's end, but a hallway to the East is brightly lit"
 roomArray[509] = "There is a bright light above you. The hallway gets darker toward the East."
-roomArray[609] = "There is a small room to the North. The light shines from the West."
-roomArray[608] = "You are in a small room. The only way out is the way you came in."
+roomArray[609] = "There is a small room to the North blocked by a green door."
 roomArray[308] = "The long hallway is to the East. There are flashing stobe lights to the West."
 roomArray[208] = "There is a room to the North. The strobe lights are very bright."
 roomArray[207] = "There is a large mirror in the room. You see the strobe lights in the mirror."
@@ -36,7 +34,6 @@ itemArray[306] = "Green Key"
 itemArray[502] = "Coin"
 itemArray[604] = "Coin"
 itemArray[506] = "Coin"
-
 
 def doesRoomExist(roomNumber):
   try:
@@ -90,30 +87,7 @@ def matthewMain():
     if userInput == randomWord:
       print("You got it! You may now continue.")
       break
-
-def main():
-  map = Map()
-  matthew = 0
-  location = 204
-  print("Corrdior of Secrets")
-  print("By Matthew, Brandon, Eric")
-  time.sleep(1)
-  while True:
-    map.draw(roomArray, itemArray, location)
-    print(roomArray[location])
-    doesItemExist(location)
-    print("Please type: N (up), S (down), E (right), W (left), Q (quit), T (take item)")
-    userInput = input()
-    location = move(userInput, location)
-    if location == 405 and matthew == 0:
-      matthewMain()
-      matthew += 1
-    if location == 405 and matthew == 1:
-      print("You have already completed the secret word puzzle.")
-
- #[room number]"There is a steel safe with a combination lock on it. Looks like it can be cracked by putting in the right combination of numbers."
-from random import *
-import time
+      
 def lockCombo():
     return randint(0,12)
 
@@ -169,14 +143,58 @@ def guessLock3():
                 print("Try the third number again:")
 
 def mainLock():
-    firstEnter = 0
-    if firstEnter == 0:
-        guessLock1()
-        guessLock2()
-        guessLock3()
-        print("You've cracked the lock!")
-        firstEnter = firstEnter + 1
-    if firstEnter ==1 and move(n,500):
-        print("You've already cracked the lock for this chest")
+  guessLock1()
+  guessLock2()
+  guessLock3()
+  print("You've cracked the lock! You may now continue.")
+  
+def pickItemUp(itemArray,location):
+  inventoryArray.append(itemArray[location])
+  print("You have picked up " + itemArray[location])
+  itemArray[location] = False
 
-mainLock()
+def main():
+  map = Map()
+  matthew = 0
+  brandon = 0
+  location = 204
+  print("   ____                _     _                     __   ____                     _        ")
+  print("  / ___|___  _ __ _ __(_) __| | ___  _ __    ___  / _| / ___|  ___  ___ _ __ ___| |_ ___  ")
+  print(" | |   / _ \| '__| '__| |/ _` |/ _ \| '__|  / _ \| |_  \___ \ / _ \/ __| '__/ _ \ __/ __| ")
+  print(" | |__| (_) | |  | |  | | (_| | (_) | |    | (_) |  _|  ___) |  __/ (__| | |  __/ |_\__ \ ")
+  print("  \____\___/|_|  |_|  |_|\__,_|\___/|_|     \___/|_|   |____/ \___|\___|_|  \___|\__|___/ ")
+  print("                                                                                          ")
+  print("By Matthew, Brandon, Eric")
+  time.sleep(1)
+  while True:
+    map.draw(roomArray, itemArray, location)
+    print(roomArray[location])
+    print("Inventory: " + str(inventoryArray))
+    doesItemExist(location)
+    print("Please type: N (up), S (down), E (right), W (left), Q (quit), T (take item)")
+    userInput = input()
+    location = move(userInput, location)
+    if userInput == "Q" or userInput == "q":
+      print("Game Over")
+      break
+    if location == 405 and matthew == 0:
+      matthewMain()
+      matthew += 1
+    if location == 405 and matthew == 1:
+      print("You have already completed the secret word puzzle.")
+    if location == 207 and brandon == 0:
+      mainLock()
+      brandon += 1
+    if location == 207 and brandon == 1:
+      print("You have already unlocked the safe.")
+    if not itemArray[location] == False and userInput == "T" or userInput == "t":
+      pickItemUp(itemArray, location)
+    if "Red Key" in inventoryArray:
+      roomArray[303] = "The red door was opened. The walls in this room are painted red. The only way out is the way you came in."
+    if "Blue Key" in inventoryArray:
+      roomArray[306] = "The room has black and white striped wallpaper. There is one dim light hanging from the ceiling. There are no other exits besides the one you entered through, from the East."
+    if "Green Key" in inventoryArray:
+      roomArray[608] = True
+    if location == 608:
+      print("You have escaped the corridor. You win!")
+      break
